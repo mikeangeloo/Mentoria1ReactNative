@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {usesListStyles} from './styles/user-styles';
 import {useNavigation} from '@react-navigation/native';
+import {formatURL} from '../utils/formatImgUrls';
 
 type Loading = {
   isLoading: boolean;
@@ -73,7 +74,9 @@ export function UserList() {
                   <Text style={usesListStyles.userName}>{item.name}</Text>
                   <Image
                     style={usesListStyles.avatar}
-                    source={{uri: item.avatar}}
+                    source={{
+                      uri: formatURL(item.avatar),
+                    }}
                     alt="User Avatar"
                   />
                   <Text style={usesListStyles.createdAt}>

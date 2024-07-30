@@ -3,6 +3,7 @@ import {UsersContext} from '../../contexts/users-context';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {Button, Image, Text, View} from 'react-native';
 import {userDetailStyles} from './styles/user-styles.ts';
+import {formatURL} from '../utils/formatImgUrls.ts';
 
 export function UserDetail() {
   const route = useRoute();
@@ -22,7 +23,10 @@ export function UserDetail() {
   return (
     <View style={userDetailStyles.container}>
       <View style={userDetailStyles.profileCard}>
-        <Image source={{uri: user.avatar}} style={userDetailStyles.avatar} />
+        <Image
+          source={{uri: formatURL(user.avatar)}}
+          style={userDetailStyles.avatar}
+        />
         <Text style={userDetailStyles.name}>{user.name}</Text>
         <Text style={userDetailStyles.date}>
           Joined: {new Date(user.createdAt).toDateString()}
